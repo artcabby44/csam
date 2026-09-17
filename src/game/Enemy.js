@@ -22,15 +22,18 @@ export class Enemy {
             const dx = this.targetX - this.x;
             const dy = this.targetY - this.y;
             
-            if (Math.abs(dx) <= this.speed && Math.abs(dy) <= this.speed) {
+            // Normalize speed to 60fps (16.666ms per frame)
+            const moveDist = this.speed * (deltaTime / 16.666);
+            
+            if (Math.abs(dx) <= moveDist && Math.abs(dy) <= moveDist) {
                 this.x = this.targetX;
                 this.y = this.targetY;
                 this.isMoving = false;
                 this.gridX = Math.round((this.x - this.maze.offsetX) / this.maze.tileSize);
                 this.gridY = Math.round((this.y - this.maze.offsetY) / this.maze.tileSize);
             } else {
-                this.x += Math.sign(dx) * this.speed;
-                this.y += Math.sign(dy) * this.speed;
+                this.x += Math.sign(dx) * moveDist;
+                this.y += Math.sign(dy) * moveDist;
             }
         } else {
             this.pickDirection();
