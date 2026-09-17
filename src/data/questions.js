@@ -1,83 +1,78 @@
 export const questions = [
     {
         id: 1,
-        type: "phishing",
-        category: "Phishing",
+        type: "physical",
+        category: "Physical Security",
         difficulty: "easy",
-        question: "Is this message phishing or safe?",
+        question: "What should you do?",
         content: `
-            <strong>From:</strong> security-alert@micros0ft.example<br>
-            <strong>Subject:</strong> Urgent Account Verification<br><br>
-            "Your account will be permanently disabled within 30 minutes. Click here to verify your password."
+            You are walking into the secure office building. A person carrying a large box of donuts is right behind you and asks you to hold the door open because their hands are full. They don't have a visible badge.
         `,
-        options: ["PHISHING", "SAFE"],
-        correctAnswer: "PHISHING",
-        explanation: "The sender domain uses a zero instead of 'o' (micros0ft), creates false urgency, and asks for password verification.",
-        cyberTip: "Always inspect the sender domain carefully for misspellings.",
+        options: ["Hold the door for them", "Ask to see their badge", "Take a donut and let them in"],
+        correctAnswer: "Ask to see their badge",
+        explanation: "This is a common tactic for tailgating. Even if it seems impolite, you must ensure everyone badging into a secure area is authorized.",
+        cyberTip: "Politely ask them to badge in themselves to maintain physical security.",
         points: 100
     },
     {
         id: 2,
-        type: "phishing",
-        category: "Phishing",
+        type: "vishing",
+        category: "Social Engineering",
         difficulty: "medium",
-        question: "Is this message phishing or safe?",
+        question: "Is this call legitimate or a scam?",
         content: `
-            <strong>From:</strong> it-helpdesk@company.example<br>
-            <strong>Subject:</strong> Password Expiration Notice<br><br>
-            "Your password will expire in 7 days. Access the normal company password portal using your usual bookmark to update it."
+            <strong>Phone Call:</strong><br><br>
+            "Hi, this is IT support. We're seeing unusual activity on your account. To verify it's you and stop the lockdown, I just need you to read me the 6-digit code we just sent to your authenticator app."
         `,
-        options: ["PHISHING", "SAFE"],
-        correctAnswer: "SAFE",
-        explanation: "The message does not include a suspicious link and directs you to use your existing trusted bookmark.",
-        cyberTip: "Legitimate IT requests usually tell you to go to known portals rather than providing direct links.",
+        options: ["LEGITIMATE", "SCAM"],
+        correctAnswer: "SCAM",
+        explanation: "IT support will never ask you to read an MFA code aloud over the phone. This is a vishing attempt to bypass your multi-factor authentication.",
+        cyberTip: "Never share MFA codes over the phone, email, or chat.",
         points: 100
     },
     {
         id: 3,
-        type: "password",
-        category: "Passwords",
+        type: "updates",
+        category: "Software Updates",
         difficulty: "easy",
-        question: "STRONG OR WEAK?",
+        question: "What is the best action to take?",
         content: `
-            <strong>Password:</strong><br>
-            <span style="font-size: 24px; color: #fff;">Summer2026!</span>
+            A pop-up on your workstation says "Critical Security Update Available. Restart Required." You are currently working on a very important, non-urgent document.
         `,
-        options: ["STRONG", "WEAK"],
-        correctAnswer: "WEAK",
-        explanation: "Adding a year and a symbol to a common dictionary word is highly predictable.",
-        cyberTip: "Avoid using seasons, years, or company names in your passwords.",
+        options: ["Ignore it forever", "Install it by the end of the day", "Click 'Remind Me Later' for a month"],
+        correctAnswer: "Install it by the end of the day",
+        explanation: "Critical security updates patch known vulnerabilities. You should save your work and restart as soon as it's convenient, preferably the same day.",
+        cyberTip: "Delaying updates leaves your machine exposed to known exploits.",
         points: 100
     },
     {
         id: 4,
-        type: "password",
-        category: "Passwords",
+        type: "data",
+        category: "Data Classification",
         difficulty: "medium",
-        question: "STRONG OR WEAK?",
+        question: "Which sharing method is acceptable?",
         content: `
-            <strong>Password:</strong><br>
-            <span style="font-size: 24px; color: #fff;">correct-horse-battery-mountain</span>
+            You need to send an unencrypted spreadsheet containing the Social Security Numbers and home addresses of 50 new employees to the HR department.
         `,
-        options: ["STRONG", "WEAK"],
-        correctAnswer: "STRONG",
-        explanation: "This is a long passphrase using multiple unrelated words, making it very hard to guess but relatively easy to remember.",
-        cyberTip: "Length is often more important than complexity.",
+        options: ["Email attachment", "Personal Dropbox link", "Secure internal file share (SFTP/Internal Drive)"],
+        correctAnswer: "Secure internal file share (SFTP/Internal Drive)",
+        explanation: "Highly sensitive PII should never be sent via unencrypted email or uploaded to personal, unsanctioned cloud storage.",
+        cyberTip: "Always use approved, secure channels for transmitting confidential data.",
         points: 100
     },
     {
         id: 5,
-        type: "mfa",
-        category: "MFA",
+        type: "passwords",
+        category: "Password Management",
         difficulty: "medium",
-        question: "What should you do?",
+        question: "What is the most secure way to store your work passwords?",
         content: `
-            You receive three unexpected Multi-Factor Authentication (MFA) prompts on your desktop authenticator app while working on a local spreadsheet.
+            You have 15 different applications you log into daily for your job. Managing these passwords is becoming difficult.
         `,
-        options: ["Approve one to make it stop", "Ignore them completely", "Deny and report the activity"],
-        correctAnswer: "Deny and report the activity to GSC Infosec or GSOC",
-        explanation: "Unexpected MFA prompts indicate someone else has your password and is trying to log in.",
-        cyberTip: "Never approve an MFA prompt you didn't initiate yourself.",
+        options: ["A sticky note under your keyboard", "A company-approved Password Manager", "An Excel file on your desktop named 'Passwords'"],
+        correctAnswer: "A company-approved Password Manager",
+        explanation: "A password manager securely encrypts your credentials and allows you to use strong, unique passwords for every site without having to memorize them.",
+        cyberTip: "Only use the password manager explicitly approved by your IT/Security team.",
         points: 100
     }
 ];
